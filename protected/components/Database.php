@@ -29,7 +29,7 @@ class Database
 		interestedpeople int default 0,
 		signedpeople int default 0,
 		description varchar(5000),
-		avatar int default 0
+		avatar varchar(255)
 		) CHARACTER SET 'utf8'";
 		$mysql->runSql($CREATE_USER);
 		

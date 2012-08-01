@@ -12,7 +12,7 @@
  * @property integer $interestedpeople
  * @property integer $signedpeople
  * @property string $description
- * @property integer $avatar
+ * @property string $avatar
  */
 class School extends CActiveRecord
 {
@@ -42,13 +42,20 @@ class School extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('userid, interestedpeople, signedpeople, avatar', 'numerical', 'integerOnly'=>true),
-			array('schoolname, phone, coverscope', 'length', 'max'=>255),
+			array('userid, interestedpeople, signedpeople', 'numerical', 'integerOnly'=>true),
+			array('schoolname, phone, coverscope, avatar', 'length', 'max'=>255),
 			array('description', 'length', 'max'=>5000),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, userid, schoolname, phone, coverscope, interestedpeople, signedpeople, description, avatar', 'safe', 'on'=>'search'),
-		);
+			array('avatar',
+				    'file',
+				    'allowEmpty'=>true,
+				    'types'=>'jpg,gif,png',
+				    'maxSize'=>1024 * 1024 * 1,
+				    'tooLarge'=>'图像最大不超过1MB，请重新上传!',
+			)
+		);	
 	}
 
 	/**
@@ -69,14 +76,14 @@ class School extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'userid' => 'Userid',
-			'schoolname' => 'Schoolname',
-			'phone' => 'Phone',
-			'coverscope' => 'Coverscope',
+			'userid' => '用户名',
+			'schoolname' => '驾校名称',
+			'phone' => '联系方式',
+			'coverscope' => '覆盖区域',
 			'interestedpeople' => 'Interestedpeople',
 			'signedpeople' => 'Signedpeople',
-			'description' => 'Description',
-			'avatar' => 'Avatar',
+			'description' => '详细描述',
+			'avatar' => '照片',
 		);
 	}
 

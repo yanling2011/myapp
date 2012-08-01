@@ -4,7 +4,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-$this->pageTitle="修改信息";
+$this->pageTitle="驾校管理";
 $this->pageCaption="驾校管理";
 $this->widget('bootstrap.widgets.BootBreadcrumbs', array(
 		'links'=>array(
