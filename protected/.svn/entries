@@ -1,0 +1,126 @@
+10
+
+dir
+1
+https://svn.sinaapp.com/woyaoxueche
+https://svn.sinaapp.com/woyaoxueche
+
+
+
+2012-07-31T12:37:18.514824Z
+1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3b7c43bf-efd0-4d5f-bd23-8f26309527a4
+
+extensions
+dir
+
+
+
+add
+
+1
+dir
+
+
+
+delete
+
+helpers
+dir
+
+
+
+add
+
+tests
+dir
+
+
+
+add
+
+yiic.bat
+file
+0
+
+
+add
+
+models
+dir
+
+
+
+add
+
+runtime
+dir
+
+
+
+add
+
+yiic.php
+file
+0
+
+
+add
+
+components
+dir
+
+
+
+add
+
+config
+dir
+
+
+
+add
+
+controllers
+dir
+
+
+
+add
+
+data
+dir
+
+
+
+add
+
+views
+dir
+
+
+
+add
+
+yiic
+file
+0
+
+
+add
+

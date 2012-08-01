@@ -1,0 +1,12 @@
+name: yiidemo
+version: 2
+# URL重写
+handle:
+- rewrite: if(!is_dir() && !is_file() && path ~ "/demos/blog/") goto "/demos/blog/index.php?%{QUERY_STRING}"
+- rewrite: if(!is_dir() && !is_file() && path ~ "/demos/hangman/") goto "/demos/hangman/index.php?%{QUERY_STRING}"
+- rewrite: if(!is_dir() && !is_file() && path ~ "/demos/helloworld/") goto "/demos/helloworld/index.php?%{QUERY_STRING}"
+- rewrite: if(!is_dir() && !is_file() && path ~ "/demos/phonebook/") goto "/demos/phonebook/index.php?%{QUERY_STRING}"
+
+- expire: if(path ~ ".js$") time 8640000
+- expire: if(path ~ ".css$") time 8640000
+- compress: if(out_header["Content-Type"] == "text/html") compress

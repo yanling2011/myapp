@@ -1,0 +1,63 @@
+10
+
+dir
+0
+https://svn.sinaapp.com/woyaoxueche/extensions/bootstrap-theme
+https://svn.sinaapp.com/woyaoxueche
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+
+
+
+
+
+
+
+
+
+
+
+3b7c43bf-efd0-4d5f-bd23-8f26309527a4
+
+behaviors
+dir
+
+
+
+add
+
+helpers
+dir
+
+
+
+add
+
+widgets
+dir
+
+
+
+add
+
+gii
+dir
+
+
+
+add
+
+vendor
+dir
+
+
+
+add
+
