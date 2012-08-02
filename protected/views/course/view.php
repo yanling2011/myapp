@@ -26,19 +26,10 @@ $this->widget('bootstrap.widgets.BootBreadcrumbs', array(
 $this->widget('bootstrap.widgets.BootButton', array(
 		'type'=>'success',
 		'label'=>'修改',
-		'url'=>Yii::app()->createUrl('/school/manage',array('id'=>$model->userid)),
+		'url'=>Yii::app()->createUrl('/course/modify',array('id'=>$model->userid)),
 		'htmlOptions'=>array('data-dismiss'=>'modal','style'=>'margin:10px'),
 		'size'=>'large',
 		'icon'=>'pencil',
-));
-
-$this->widget('bootstrap.widgets.BootButton', array(
-		'type'=>'success',
-		'label'=>'添加课程',
-		'url'=>Yii::app()->createUrl('/course/create',array('id'=>$model->id)),
-		'htmlOptions'=>array('data-dismiss'=>'modal'),
-		'size'=>'large',
-		'icon'=>'flag',
 ));
 ?>
 </div>
@@ -70,15 +61,6 @@ if ($dataProvider!=null){
         array(
             'class'=>'bootstrap.widgets.BootButtonColumn',
             'htmlOptions'=>array('style'=>'width: 50px'),
-	    'template'=>'{view}   {update}     {delete}',
-	    'buttons'=>array
-	    (
-		'view' => array
-		(
-		    'url'=>'Yii::app()->createUrl("course/view",array("id"=>$data->id))',
-		),
-		
-	    ),
         ),
     ),
 )); 

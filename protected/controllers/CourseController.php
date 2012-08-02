@@ -1,6 +1,6 @@
 <?php
 
-class SchoolController extends Controller
+class CourseController extends Controller
 {
 	/**
 	 * Declares class-based actions.
@@ -24,14 +24,21 @@ class SchoolController extends Controller
 		);
 	}
 
-	
-	
-	public function actionManage($id){
-	    if ($id!=Yii::app()->user->id && !Yii::app()->user->getIsOwner())
+	public function actionCreate($id){
+	    $school = School::model()->findbyPK($id);
+	    if($school == NULL || ($school->userid != Yii::app()->user->id && !Yii::app()->user->getIsOwner()))
 		throw new CHttpException(404,'The requested page does not exist.');
-	    $modelSchool=School::model()->findbyUserId($id);
-            
-            if($modelSchool === NULL) $modelSchool = new School();
-            $this->render('manage',array('model'=>$modelSchool));
+	    $model= $model = new Course();
+	    if(isset($_POST['Course']))
+	    {
+		$model->attributes=$_POST['Course'];
+		$model->schoolid = $id;
+		$model->save(true,array('schoolid','coursename','studyarea','price1','price2', 'description'));
+		$this->redirect (array (
+		    'view',
+		    'id' => $model->id
+		    ));
+	    }    
+            $this->render('create',array('model'=>$model));
 	}
 }

@@ -40,6 +40,7 @@ class Course extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('coursename, studyarea, price1, price2', 'required'),
 			array('schoolid, price1, price2', 'numerical', 'integerOnly'=>true),
 			array('coursename, studyarea', 'length', 'max'=>255),
 			array('description', 'length', 'max'=>5000),
@@ -98,5 +99,13 @@ class Course extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+	
+	public function bySchoolId($schoolId)
+	{
+		$this->getDbCriteria()->mergeWith(array(
+		    'condition'=>"schoolId=$schoolId",
+		));
+		return $this;
 	}
 }

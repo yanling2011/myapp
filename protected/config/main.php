@@ -1,5 +1,8 @@
+
 <?php
 
+//url manage server setting
+//http://www.cppblog.com/huangjianfu/archive/2011/07/26/151865.html
 // uncomment the following to define a path alias
 // Yii::setPathOfAlias('local','path/to/local-folder');
 
@@ -72,9 +75,9 @@ $config = array(
             // 静态化
             //'urlSuffix'=>'.html',
             //路径模式的URL,方便SEO,搜索引擎搜索
-           //  'urlFormat'=>'path',
+             'urlFormat'=>'path',
             //不显示脚本名 index.php
-           // 'showScriptName'=>false,
+            'showScriptName'=>false,
             //主域名 直接访问controllers
             #'baseUrl'=>'http://'.SUB_DOMAIN_main,
             'rules'=>array(
@@ -82,7 +85,7 @@ $config = array(
                 'posts/<tag:.*?>'=>'post/index',
                 //assets目录发布到web，使用path路径，浏览器会认为是静态文件*达到http304的目的
                 'assets/<path:.*?>'=>'site/assets',
-                 '<controller:\w+>/<action:\w+>'=>'<controller>/<action>', 
+                '<controller:\w+>/<action:\w+>'=>'<controller>/<action>', 
             ),
         ),
         

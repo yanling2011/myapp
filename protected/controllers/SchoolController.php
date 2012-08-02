@@ -31,12 +31,6 @@ class SchoolController extends Controller
 		throw new CHttpException(404,'The requested page does not exist.');
 	    $model=School::model()->findbyUserId($id);
 	    if($model === NULL) $model = new School();
-//	    else{
-//		$this->redirect (array (
-//			'view',
-//			'id' => $model->userid
-//			));
-//	    }
 	    if(isset($_POST['School']))
 	    {
 		$model->attributes=$_POST['School'];
@@ -59,7 +53,7 @@ class SchoolController extends Controller
 		}
 		else
 		{
-			$res=$model->save(true,array('userid','schoolname','phone','coverscope', 'description', 'avatar'));
+			$res=$model->save(true,array('userid','schoolname','phone','coverscope', 'description'));
 		}
 		if($res)
 		{
@@ -70,7 +64,7 @@ class SchoolController extends Controller
 			    Yii::import('application.extensions.image.KImage');
 			    $image = new KImage($file->getTempName());
 //			    $image =Yii::app()->image->load($file->getTempName());
-			    $image->resize(256, 256,KImage::WIDTH)->crop(128,128);
+			    $image->resize(512, 512,KImage::WIDTH)->crop(512,512);
 			    ob_start();
 			    $image->render();
 			    $data=ob_get_contents();
@@ -98,9 +92,26 @@ class SchoolController extends Controller
 	}
 	
 	public function actionView($id)
-	{
-		$this->render('view',array(
-			'model'=>School::model()->findbyUserId($id),
-		));
+	{	
+		$model = School::model()->findbyUserId($id);
+		if($model != NULL)
+		{
+		    if ($model->userid!=Yii::app()->user->id && !Yii::app()->user->getIsOwner())
+			throw new CHttpException(404,'The requested page does not exist.');
+		    $courses=new Course('search');
+		    $courses->unsetAttributes();  // clear any default values
+		    $this->render('view',array(
+			'model'=>$model,
+			'courses'=>$courses
+		    ));
+		}
+		else{
+		     $this->redirect (array (
+			'manage',
+			'id' => Yii::app()->user->id
+		    ));
+		}
 	}
+	
+	
 }

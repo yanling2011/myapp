@@ -78,7 +78,6 @@ class SiteController extends Controller
 		// if it is ajax validation request
 		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
 		{
-			
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}

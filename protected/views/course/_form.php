@@ -15,11 +15,11 @@
     $this->widget('bootstrap.widgets.BootAlert'); ?>
 
     <?php echo $form->errorSummary($model); ?>
-    <img src="<?php echo $model->getAvatar();?>"></img>
-    <?php echo $form->FileFieldRow($model,'avatar',array('hint'=>'你可以上传一个驾校图像')); ?>
-    <?php echo $form->textFieldRow($model,'schoolname',array('class'=>'span5','maxlength'=>255)); ?>
-    <?php echo $form->textFieldRow($model,'phone',array('class'=>'span5','maxlength'=>255)); ?>
-    <?php echo $form->textFieldRow($model,'coverscope',array('class'=>'span5','maxlength'=>255, 'hint'=>'以逗号隔开')); ?>
+
+    <?php echo $form->textFieldRow($model,'coursename',array('class'=>'span5','maxlength'=>255)); ?>
+    <?php echo $form->textFieldRow($model,'studyarea',array('class'=>'span5','maxlength'=>255)); ?>
+    <?php echo $form->textFieldRow($model,'price1',array('class'=>'span5')); ?>
+    <?php echo $form->textFieldRow($model,'price2',array('class'=>'span5')); ?>
     <?php echo $form->textAreaRow($model,'description',array('rows'=>20, 'cols'=>50, 'class'=>'span8')); ?>
 
     
@@ -36,7 +36,7 @@
             'label'=> '取消',
 	    'icon'=>'arrow-right', 
 	    'size'=>'large',
-	    'url'=>Yii::app()->createUrl('school/view',array('id'=>$model->userid)),
+	    'url'=>Yii::app()->createUrl('school/view',array('id'=>Yii::app()->user->id)),
         )); ?>
     </div> 
 

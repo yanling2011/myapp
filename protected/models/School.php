@@ -130,7 +130,7 @@ class School extends CActiveRecord
         public function getAvatar()
 	{
 		if ($this->avatar==null)
-			return null;
+			return "http://img.t.sinajs.cn/t4/style/images/face/male_big.png";
 		if (defined('SAE_TMP_PATH'))
 		{
 			$s=new SaeStorage();
