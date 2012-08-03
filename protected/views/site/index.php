@@ -36,7 +36,42 @@ $this->pageDescription="首页";
 //$news=Message::model()->latest(10)->findAll();
 ?>
 
-<?php $this->beginWidget('bootstrap.widgets.BootHero', array(
+<?php
+$dataProvider=School::model()->search();
+$dataProvider->pagination=array('pageSize'=>20);
+$this->widget('bootstrap.widgets.BootGridView', array(
+	'type'=>'striped bordered condensed',
+	'dataProvider'=>$dataProvider,
+	'template'=>"{items}",
+	'columns'=>array(
+	    array(
+		'class'=>'bootstrap.widgets.BootButtonColumn',
+		'htmlOptions'=>array('style'=>'width: 50px'),
+		'template'=>'{view}  {update} {delete}',
+		'buttons'=>array
+		(
+		    'view' => array
+		    (
+			'url'=>'Yii::app()->createUrl("course/view",array("id"=>$data->id))',
+		    ),
+		    'update' => array
+		    (
+			'url'=>'Yii::app()->createUrl("course/update",array("id"=>$data->id))',
+		    ),
+		    'delete' => array
+		    (
+			'url'=>'Yii::app()->createUrl("course/delete",array("id"=>$data->id))',
+		    ),
+		),
+	    ),
+	)
+    )
+)
+?>
+
+<?php
+    
+$this->beginWidget('bootstrap.widgets.BootHero', array(
     'heading'=>'Hello, world!',
 )); ?>
  

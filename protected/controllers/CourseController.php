@@ -23,7 +23,8 @@ class CourseController extends Controller
 			),
 		);
 	}
-
+	
+	//param: schoolId
 	public function actionCreate($id){
 	    $school = School::model()->findbyPK($id);
 	    if($school == NULL || ($school->userid != Yii::app()->user->id && !Yii::app()->user->getIsOwner()))
@@ -40,5 +41,40 @@ class CourseController extends Controller
 		    ));
 	    }    
             $this->render('create',array('model'=>$model));
+	}
+	public function actionView($id){
+	    $model = Course::model()->findbyPK($id);
+	    if($model != NULL)
+	    {
+		$school = School::model()->findByPK($model->schoolid);
+		if ($school->userid!=Yii::app()->user->id && !Yii::app()->user->getIsOwner())
+		    throw new CHttpException(404,'The requested page does not exist.');
+		$this->render('view',array(
+		    'model'=>$model,
+		));
+	    }
+	    else{
+		throw new CHttpException(404,'The requested page does not exist.');
+	    }
+	}
+	public function actionUpdate($id){
+	    $model= Course::model()->findbyPK($id);
+	    $school = School::model()->findbyPK($model->schoolid);
+	    if($school == NULL || ($school->userid != Yii::app()->user->id && !Yii::app()->user->getIsOwner()))
+		throw new CHttpException(404,'The requested page does not exist.');
+	    if(isset($_POST['Course']))
+	    {
+		$model->attributes=$_POST['Course'];
+		$model->save(true,array('schoolid','coursename','studyarea','price1','price2', 'description'));
+		$this->redirect (array (
+		    'view',
+		    'id' => $model->id
+		    ));
+	    }    
+            $this->render('update',array('model'=>$model));
+	}
+	public function actionDelete($id){
+	    $model= Course::model()->findbyPK($id);
+	    $model->delete();
 	}
 }

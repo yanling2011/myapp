@@ -63,21 +63,28 @@ if ($dataProvider!=null){
     'dataProvider'=>$dataProvider,
     'template'=>"{items}",
     'columns'=>array(
-        array('name'=>'coursename', 'header'=>'coursename'),
-        array('name'=>'studyarea', 'header'=>'studyarea'),
-        array('name'=>'price1', 'header'=>'price1'),
-        array('name'=>'price2', 'header'=>'price2'),
+        array('name'=>'coursename', 'header'=>'课程名称'),
+        array('name'=>'studyarea', 'header'=>'学车地点'),
+        array('name'=>'price1', 'header'=>'市场价格'),
+        array('name'=>'price2', 'header'=>'网上价格'),
         array(
             'class'=>'bootstrap.widgets.BootButtonColumn',
             'htmlOptions'=>array('style'=>'width: 50px'),
-	    'template'=>'{view}   {update}     {delete}',
+	    'template'=>'{view}  {update} {delete}',
 	    'buttons'=>array
 	    (
 		'view' => array
 		(
 		    'url'=>'Yii::app()->createUrl("course/view",array("id"=>$data->id))',
 		),
-		
+		'update' => array
+		(
+		    'url'=>'Yii::app()->createUrl("course/update",array("id"=>$data->id))',
+		),
+		'delete' => array
+		(
+		    'url'=>'Yii::app()->createUrl("course/delete",array("id"=>$data->id))',
+		),
 	    ),
         ),
     ),

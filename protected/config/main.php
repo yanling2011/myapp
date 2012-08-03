@@ -1,4 +1,3 @@
-
 <?php
 
 //url manage server setting

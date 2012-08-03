@@ -5,7 +5,7 @@
 </style>
 
 <?php $form=$this->beginWidget('bootstrap.widgets.BootActiveForm',array( 
-    'id'=>'school-form', 
+    'id'=>'course-form', 
     'enableAjaxValidation'=>false, 
     'htmlOptions'=>array('enctype'=>'multipart/form-data'),
 )); ?>

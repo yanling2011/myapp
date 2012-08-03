@@ -39,7 +39,7 @@
                             'class'=>'bootstrap.widgets.BootMenu',	
                             'items'=>array(
                                     array('label'=>'首页', 'url'=>array('/site/index')),
-				    array('label'=>'管理', 'url'=>array('/school/manage', 'id'=>Yii::app()->user->id), 'visible'=>Yii::app()->user->getIsOwner()),
+//				    array('label'=>'管理', 'url'=>array('/school/manage', 'id'=>Yii::app()->user->id), 'visible'=>Yii::app()->user->getIsOwner()),
 				    array('label'=>'我的驾校', 'url'=>array('/school/view', 'id'=>Yii::app()->user->id), 'visible'=>Yii::app()->user->getIsOwner()),
                                     array('label'=>'登录', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
                                     array('label'=>'注册', 'url'=>array('/site/register'), 'visible'=>Yii::app()->user->isGuest),

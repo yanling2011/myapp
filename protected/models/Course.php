@@ -69,11 +69,11 @@ class Course extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'schoolid' => 'Schoolid',
-			'coursename' => 'Coursename',
-			'studyarea' => 'Studyarea',
-			'price1' => 'Price1',
-			'price2' => 'Price2',
-			'description' => 'Description',
+			'coursename' => '课程名称',
+			'studyarea' => '学车地点',
+			'price1' => '市场价格',
+			'price2' => '网上价格',
+			'description' => '详细描述',
 		);
 	}
 
